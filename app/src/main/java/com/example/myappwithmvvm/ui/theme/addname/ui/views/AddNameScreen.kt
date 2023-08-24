@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -215,5 +216,18 @@ fun ItemRow(text: String, onRemove: () -> Unit) {
         }
     }
 }
+
+@Composable
+fun RemoveAllItems(items: List<String>, onRemove: () -> Unit) {
+    IconButton(onClick = onRemove) {
+        Icon(
+            imageVector = ImageVector.vectorResource(id = R.drawable.baseline_delete_forever_24),
+            contentDescription = "Delete All Items Button",
+            tint = MaterialTheme.colorScheme.tertiary
+        )
+    }
+}
+
+
 
 
