@@ -1,4 +1,4 @@
-package com.example.myappwithmvvm.ui.theme.addname.data
+package com.example.myappwithmvvm.ui.theme.addname.data.repository
 
 import android.app.Application
 import com.example.myappwithmvvm.ui.theme.addname.data.source.DataSourceFactory

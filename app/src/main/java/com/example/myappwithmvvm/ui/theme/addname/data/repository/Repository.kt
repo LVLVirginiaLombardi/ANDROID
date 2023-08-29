@@ -1,4 +1,4 @@
-package com.example.myappwithmvvm.ui.theme.addname.data
+package com.example.myappwithmvvm.ui.theme.addname.data.repository
 
 interface Repository {
     fun getListName(): List<String>

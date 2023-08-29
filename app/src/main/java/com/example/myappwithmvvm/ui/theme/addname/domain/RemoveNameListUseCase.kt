@@ -1,9 +1,8 @@
 package com.example.myappwithmvvm.ui.theme.addname.domain
 
 import android.app.Application
-import android.content.SharedPreferences
-import com.example.myappwithmvvm.ui.theme.addname.data.DataRepository
-import com.example.myappwithmvvm.ui.theme.addname.data.Repository
+import com.example.myappwithmvvm.ui.theme.addname.data.repository.DataRepository
+import com.example.myappwithmvvm.ui.theme.addname.data.repository.Repository
 
 class RemoveNameListUseCase(
     application: Application

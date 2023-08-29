@@ -37,6 +37,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.myappwithmvvm.R
+import com.example.myappwithmvvm.ui.theme.addname.presentation.intents.AddNameIntent
+import com.example.myappwithmvvm.ui.theme.addname.presentation.results.AddNameResult
 import com.example.myappwithmvvm.ui.theme.addname.presentation.viewmodels.AddNameViewModel
 
 @ExperimentalMaterial3Api
@@ -166,7 +168,7 @@ fun Content(viewModel: AddNameViewModel) {
             value = newItemText,
             onValueChange = { newItemText = it },
             onAddItem = {
-                viewModel.addItem(newItemText)
+                viewModel.onIntent(AddNameIntent.AddItem(newItemText))
                 newItemText = ""
             },
             modifier = Modifier
@@ -179,7 +181,7 @@ fun Content(viewModel: AddNameViewModel) {
 
         viewModel.items.value?.let {
             ItemList(items = it) { index ->
-                viewModel.removeItem(index)
+                viewModel.onIntent(AddNameIntent.RemoveItem(index))
             }
         }
     }
