@@ -128,7 +128,6 @@ fun MyTextField(
             singleLine = true,
             maxLines = 1,
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                textColor = color,
                 cursorColor = Color.Black,
                 containerColor = Color.LightGray
             ),

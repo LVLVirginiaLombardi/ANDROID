@@ -3,14 +3,18 @@ package com.example.myappwithmvvm.ui.theme.addname.presentation.viewmodels
 import android.app.Application
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.example.myappwithmvvm.ui.theme.addname.domain.AddNameListUseCase
 import com.example.myappwithmvvm.ui.theme.addname.domain.RemoveNameListUseCase
 import com.example.myappwithmvvm.ui.theme.addname.presentation.actions.AddNameAction
 import com.example.myappwithmvvm.ui.theme.addname.presentation.intents.AddNameIntent
 import com.example.myappwithmvvm.ui.theme.addname.presentation.processor.AddNameProcessor
 import com.example.myappwithmvvm.ui.theme.addname.presentation.results.AddNameResult
+import javax.inject.Inject
 
-class AddNameViewModel(application: Application) : AndroidViewModel(application) {
+class AddNameViewModel @Inject constructor(): ViewModel() {
+
+    val application = Application()
 
     val processor = AddNameProcessor(application)
 

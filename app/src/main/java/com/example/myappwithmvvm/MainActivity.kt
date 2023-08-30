@@ -9,18 +9,32 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.myappwithmvvm.ui.theme.MyAppWithMVVMTheme
+import com.example.myappwithmvvm.ui.theme.addname.di.ViewModelFactory
 import com.example.myappwithmvvm.ui.theme.addname.presentation.intents.AddNameIntent
 import com.example.myappwithmvvm.ui.theme.addname.presentation.viewmodels.AddNameViewModel
 import com.example.myappwithmvvm.ui.theme.addname.ui.views.AddNameScreen
+import dagger.Component
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
-    lateinit var viewModel: AddNameViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private val viewModel: AddNameViewModel =
+        ViewModelProvider(
+            this,
+            viewModelFactory
+        )[AddNameViewModel::class.java]
+
+    override fun onStart() {
+        super.onStart()
+//        DaggerAddNameComponent.factory().create(coreComponent()).inject(this)
+    }
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = AddNameViewModel(application)
         viewModel.onIntent(AddNameIntent.LoadNameList)
         setContent {
             MyAppWithMVVMTheme {
@@ -36,7 +50,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun PreviwTest() {
     MyAppWithMVVMTheme {
-        AddNameScreen(viewModel = AddNameViewModel(application = Application()))
+        AddNameScreen(viewModel = AddNameViewModel())
     }
 }
 
